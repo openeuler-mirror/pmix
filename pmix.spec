@@ -1,10 +1,11 @@
 Name:           pmix
 Version:        3.1.4
-Release:        2
+Release:        3
 Summary:        Process Management Interface Exascale (PMIx)
 License:        BSD
 URL:            https://pmix.org
 Source0:        https://github.com/openpmix/openpmix/releases/download/v%{version}/pmix-%{version}.tar.bz2
+Patch0000:      correct-the-help-information.patch
 BuildRequires:  autoconf automake flex hwloc-devel libevent-devel libtool munge-devel perl-interpreter
 
 %description
@@ -38,7 +39,7 @@ Requires:       pmix = %{version}-%{release}
 Contains for use with PMIx-based RMs and language-based starters (e.g., mpirun).
 
 %prep
-%autosetup -n pmix-%{version}
+%autosetup -n pmix-%{version} -p1
 find src -name \*.l -print -exec touch --no-create {} \;
 
 %build
@@ -85,5 +86,8 @@ find src -name \*.l -print -exec touch --no-create {} \;
 %{_bindir}/*
 
 %changelog
+* Sat Sep 18 2021 caodongxia <caodongxia@huawei.com> - 3.1.4-3
+- Correct the help information
+
 * Wed Mar 4 2020 Ling Yang <lingyang2@huawei.com> - 3.1.4-2
 - Package Init
