@@ -1,0 +1,88 @@
+From 7af22e2e8a2d8ee775e56c0cad5dc4426d4951a2 Mon Sep 17 00:00:00 2001
+From: caodongxia <315816521@qq.com>
+Date: Sat, 18 Sep 2021 11:08:02 +0800
+Subject: [PATCH] correct the help information
+
+---
+ src/tools/pevent/help-pevent.txt   | 6 +++---
+ src/tools/plookup/help-plookup.txt | 6 +++---
+ src/tools/pps/help-pps.txt         | 6 +++---
+ src/util/cmd_line.c                | 5 -----
+ 4 files changed, 9 insertions(+), 14 deletions(-)
+
+diff --git a/src/tools/pevent/help-pevent.txt b/src/tools/pevent/help-pevent.txt
+index fabeafe..a7c0e18 100644
+--- a/src/tools/pevent/help-pevent.txt
++++ b/src/tools/pevent/help-pevent.txt
+@@ -18,11 +18,11 @@
+ #
+ # $HEADER$
+ #
+-# This is the US/English help file for Open MPI PS tool
++# This is the US/English help file for OpenPMIx event tool
+ #
+ [usage]
+-ompi-ps [OPTIONS]
+-  Open MPI Job and Process Status Tool
++pevent [OPTIONS]
++  OpenPMIx event generation tool
+ 
+ %s
+ #
+diff --git a/src/tools/plookup/help-plookup.txt b/src/tools/plookup/help-plookup.txt
+index fabeafe..0bf2176 100644
+--- a/src/tools/plookup/help-plookup.txt
++++ b/src/tools/plookup/help-plookup.txt
+@@ -18,11 +18,11 @@
+ #
+ # $HEADER$
+ #
+-# This is the US/English help file for Open MPI PS tool
++# This is the US/English help file for OpenPMIx lookup tool
+ #
+ [usage]
+-ompi-ps [OPTIONS]
+-  Open MPI Job and Process Status Tool
++plookup [OPTIONS] [KEYS]
++  OpenPMIx lookup tool
+ 
+ %s
+ #
+diff --git a/src/tools/pps/help-pps.txt b/src/tools/pps/help-pps.txt
+index fabeafe..97c8a3b 100644
+--- a/src/tools/pps/help-pps.txt
++++ b/src/tools/pps/help-pps.txt
+@@ -18,11 +18,11 @@
+ #
+ # $HEADER$
+ #
+-# This is the US/English help file for Open MPI PS tool
++# This is the US/English help file for OpenPMIx PS tool
+ #
+ [usage]
+-ompi-ps [OPTIONS]
+-  Open MPI Job and Process Status Tool
++pps [OPTIONS]
++  OpenPMIx Job and Process Status Tool
+ 
+ %s
+ #
+diff --git a/src/util/cmd_line.c b/src/util/cmd_line.c
+index 15a2b61..e0a08f2 100644
+--- a/src/util/cmd_line.c
++++ b/src/util/cmd_line.c
+@@ -726,11 +726,6 @@ char *pmix_cmd_line_get_usage_msg(pmix_cmd_line_t *cmd)
+             }
+         }
+     }
+-    if(otype == PMIX_CMD_LINE_OTYPE_NULL || otype == PMIX_CMD_LINE_OTYPE_GENERAL) {
+-        char *argument_line = "\nFor additional mpirun arguments, run 'mpirun --help <category>'\n\nThe following categories exist: general (Defaults to this option), debug,\n    output, input, mapping, ranking, binding, devel (arguments useful to PMIX\n    Developers), compatibility (arguments supported for backwards compatibility),\n    launch (arguments to modify launch options), and dvm (Distributed Virtual\n    Machine arguments).";
+-
+-        pmix_argv_append(&argc, &argv, argument_line);
+-    }
+     if (NULL != argv) {
+         ret = pmix_argv_join(argv, '\n');
+         pmix_argv_free(argv);
+-- 
+2.27.0
+
