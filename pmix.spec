@@ -1,11 +1,16 @@
 Name:           pmix
 Version:        3.1.4
-Release:        3
+Release:        4
 Summary:        Process Management Interface Exascale (PMIx)
 License:        BSD
 URL:            https://pmix.org
 Source0:        https://github.com/openpmix/openpmix/releases/download/v%{version}/pmix-%{version}.tar.bz2
 Patch0000:      correct-the-help-information.patch
+
+%ifarch riscv64
+Patch0001:      extend_test_timeout.patch
+%endif
+
 BuildRequires:  autoconf automake flex hwloc-devel libevent-devel libtool munge-devel perl-interpreter
 
 %description
@@ -86,6 +91,9 @@ find src -name \*.l -print -exec touch --no-create {} \;
 %{_bindir}/*
 
 %changelog
+* Mon Dec 13 2021 lvxiaoqian <xiaoqian@nj.iscas.ac.cn> - 3.1.4-4
+- extend test timeout for riscv
+
 * Sat Sep 18 2021 caodongxia <caodongxia@huawei.com> - 3.1.4-3
 - Correct the help information
 
