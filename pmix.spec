@@ -1,6 +1,6 @@
 Name:           pmix
-Version:        3.1.4
-Release:        4
+Version:        3.1.6
+Release:        1
 Summary:        Process Management Interface Exascale (PMIx)
 License:        BSD
 URL:            https://pmix.org
@@ -91,6 +91,9 @@ find src -name \*.l -print -exec touch --no-create {} \;
 %{_bindir}/*
 
 %changelog
+* Tue Mar 1 2022 lvxiaoqian <xiaoqian@nj.iscas.ac.cn> - 3.1.6-1
+- update to 3.1.6
+
 * Mon Dec 13 2021 lvxiaoqian <xiaoqian@nj.iscas.ac.cn> - 3.1.4-4
 - extend test timeout for riscv
 
